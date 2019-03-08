@@ -1,0 +1,16 @@
+/* ques4:hover{
+    background-color: lightblue;
+} */
+
+.q0:hover {
+  background-color: pink;
+}
+.q1:hover {
+  background-color: rgb(55, 238, 18);
+}
+.q2:hover {
+  background-color: royalblue;
+}
+.q3:hover {
+  background-color: lightsalmon;
+}

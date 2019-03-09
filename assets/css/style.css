@@ -1,16 +1,54 @@
 /* ques4:hover{
     background-color: lightblue;
 } */
+* {
+  box-sizing: border-box;
+}
 
 .q0:hover {
   background-color: pink;
+  color: black;
 }
 .q1:hover {
   background-color: rgb(55, 238, 18);
+  color: black;
 }
 .q2:hover {
   background-color: royalblue;
+  color: black;
 }
 .q3:hover {
   background-color: lightsalmon;
+  color: black;
+}
+.jumbotron {
+  background-image: url("../images/ryan-tang-273380-unsplash.jpg");
+  color: whitesmoke;
+  background-size: cover;
+  position: absolute;
+  /* top: 0; bottom: 0; left: 0; right: 0;
+   */
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  /* border-radius: 25px; */
+}
+.container {
+  border-radius: 25px;
+  background-image: url("../images/trianglify.png");
+  background-blend-mode: lighten;
+}
+.questionContainer {
+  width: 600px;
+  margin: auto;
+}
+.quest {
+  padding-left: 90px;
+  font-size: 24px;
+}
+.ques {
+  font-size: 26px;
+}
+span {
+  font-size: 16px;
 }

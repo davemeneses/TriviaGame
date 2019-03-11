@@ -22,7 +22,7 @@
   color: black;
 }
 .jumbotron {
-  background-image: url("../images/ryan-tang-273380-unsplash.jpg");
+  background-image: url("../images/abstract3.jpg");
   color: whitesmoke;
   background-size: cover;
   position: absolute;
@@ -40,7 +40,7 @@
   padding-bottom: 2%;
   border: 19px double #000000;
 
-  background-image: url("../images/trianglify.png");
+  background-image: url("../images/abstrac1.jpg");
   /* background-blend-mode: lighten; */
 }
 .questionContainer {
@@ -65,9 +65,9 @@
   font-size: 32px;
   color: pink;
 }
-.form-control {
-  color: blue;
-}
+/* .form-control {
+  color: black;
+} */
 .highlight {
   /* background-color: plum; */
   border-width: 2px;

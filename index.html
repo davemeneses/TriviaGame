@@ -11,22 +11,21 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets\javascript/app.js"></script>
-
+    
     <title>Trivia</title>
 </head>
 
 <body>
-
+    
     <div class="jumbotron jumbotron-fluid">
-
+        
         <div class="container">
-            <h2 class="display-4">TRIVIA GAME</h2>
+            <h2 class="display-4">Trivia Madness</h2>
             <div class='askForm'>
                 <div>
                     Number Of Questions
                     <select class="form-control numberSelect">
-
+                        
                         <option>5</option>
                         <option>10</option>
                         <option>15</option>
@@ -36,13 +35,13 @@
                 <div>
                     Difficulty
                     <select class="form-control difficulty">
-
+                        
                         <option>hard</option>\
                         <option>medium</option>
                         <option>easy</option>
                     </select>
                 </div>
-
+                
                 <div>
                     Genre
                     <select class="form-control genre">
@@ -55,9 +54,9 @@
                     </select>
                 </div>
             </div>
-
+            
             <button class='gameStart'>Start</button>
-
+            
             <p class="lead ques">
                 <p class="gameOver"></p>
                 <div class="newGame"></div>
@@ -68,19 +67,20 @@
                 <div class='quest q2'> </div>
                 <div class='quest q3'> </div>
             </div>
-
-
+            
+            
             <div id="show-number"></div>
             <br>
             <div class='answer'></div>
-
+            
             <div class="correctAnswerDisplay"></div>
             <div class="incorrectAnswerDisplay"></div>
-
+            
         </div>
     </div>
-
-
+    
+   
+    <script src="assets\javascript/app.js"></script>
 </body>
 
 

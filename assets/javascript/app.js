@@ -18,8 +18,6 @@ $(document).ready(function() {
   var count = 0;
   // just declaring the variable so we can manipulate it per question later.
   var time;
-  // this is my variable that calls to the audio i embedded in the HTML
-
   // this is our game start function.
   $(".gameStart").on("click", function gameStart() {
     // this controls the number of questions the user wants to answer

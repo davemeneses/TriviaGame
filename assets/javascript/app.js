@@ -81,13 +81,20 @@ $(document).ready(function() {
       //  we tried to use $(".quest").on("click").off() and then turn it back on what the code switched up the divs to display the answers but we couldn't get that to work so we had to do .css("pointer-events").
       //  we just didn't want the user to be able to continue guessing after they had initally gotten it right or wrong because our counter for incorrect and correct answers would just continue to go up.
       $(".quest").css({ "pointer-events": "auto" });
+      // this removes the highlted div for the incorrectly guessed answer from the last question.
       $(".quest").removeClass("wrongHL");
+      // this removes the highlted div for the right answer from the last question.
       $(".quest").removeClass("highlight");
+      // this empties the answer from the last question if they guessed incorrectly
       $(".answer").empty();
+      // this tells the computer which correct answer from the array to use for the question
       correctAnswer = questionContent[count].correct_answer;
+      // these next two empty out the question asked and possible answers from the last question
       $(".ques").empty();
       $(".quest").empty();
+      // this inserts the current question from the questionBank array onto the .ques div
       $(".ques").text(questionBank[count]);
+      // these next 3 variables all are grabbing incrorrect answers from the object in the question content array. [count] is how the computer knows which ones to grab.
       var a = questionContent[count].incorrect_answers[0]
         .replace(/&quot;/g, '"')
         .replace(/&#039;/g, "'")
@@ -100,88 +107,107 @@ $(document).ready(function() {
         .replace(/&quot;/g, '"')
         .replace(/&#039;/g, "'")
         .replace(/&eacute;/g, "é");
+      // this assigns var d with the correct answer from the question content array. same principle as above.
       var d = questionContent[count].correct_answer
         .replace(/&quot;/g, '"')
         .replace(/&#039;/g, "'")
         .replace(/&eacute;/g, "é");
+      // this creates a variable "newQuestion" which is the last 4 variables put together in an array.
       var newQuestion = [a, b, c, d];
+      // this calls our shuffle function to mix up the last 4 variables before we display them on the page.
       var k = shuffle(newQuestion);
       //adds questionContent into question divs
       for (let i = 0; i < newQuestion.length; i++) {
         $(".q" + i).text(k[i]);
       }
     } else {
+      // if there are no more questions to add from our array we go to the end screen
       endScreen();
     }
+    // again, count is how we keep track of which question we are on.
     count++;
   }
-
+  // this is how we tell which answer is clicked by the user and check it against our objects in the array we bult to see if it matches with var d, correct_answer
   $(document).on("click", ".quest", function() {
     var k = $(this).text();
     if (k == correctAnswer) {
+      // if the person got it right we call our "gotRight" function
       gotRight();
+      // it also highlights the correct selection
       $(this).addClass("highlight");
     } else {
+      // if they chose anything else besides the correct answer we trigger our "gotWrong" function
       gotWrong();
+      // it also adds the "wrongHl" (aka wrong highlight) class which shows what the user chose
       $(this).addClass("wrongHL");
+      // we also see the correct answer highlighted in green by using a for loop to check the rest of the answers for the correctAnswer variable which we assigned the correct_answer quesiton to above.
       for (let i = 0; i < 4; i++) {
         if ($(".q" + i).text() == correctAnswer) {
+          // the correct answer becomes highlighted in green
           $(".q" + i).addClass("highlight");
         }
       }
     }
+    // this disables the user from clicking after they have made a selection so they cannot keep guessing for that particular question
     $(".quest").css({ "pointer-events": "none" });
   });
-
+  // this is the function that shuffles our incorrect answers with the correct answers. we found this function online that adds a "temporary value" to each item so that the it will randomize the answers in their array
   function shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
       randomIndex;
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-      // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
     return array;
   }
-
+  // things got wonky in this part and we had to declare var myVar here othewise we had trouble defining it later.
   var myVar;
+  // this is the function that ran if the user guessed correctly.
   function gotRight() {
+    // first we call the stop function, then add to the counter that tracks correct guesses
     stop();
     answeredCorrectly++;
-    $(".answer").text("Correct Answer! Nice job ;)");
+    // then we display on the screen the following text
+    $(".answer").text("You got it! Great guess!");
+    // and this displays how many questions the user has gotten correct so far
     $(".correctAnswerDisplay").text("Correct Answers: " + answeredCorrectly);
+    // this adds a 3 second pause so the user has time to look at the information and then sets the next question.
     myVar = setTimeout(setQuestion, 3000);
   }
-
+  // this is the funciton that runs if the user guesses incorrectly
   function gotWrong() {
+    // it runs stop, then adds the the counter that tracks incorrect guesses
     stop();
     answeredIncorrectly++;
-    $(".answer").text("WRONG!  Correct Answer: " + correctAnswer);
+    // next it displays the following text, the correct answer, and how many questions the user has gotten wrong
+    $(".answer").text("Incorrect!  Correct Answer: " + correctAnswer);
     $(".incorrectAnswerDisplay").text(
       "Incorrect Answers: " + answeredIncorrectly
     );
     myVar = setTimeout(setQuestion, 3000);
   }
+  // this function runs if the user takes too long to guess and the clock goes down to zero. It counts the same as guess incorrectly.
   function timeLoss() {
     stop();
     answeredIncorrectly++;
-    $(".answer").text("Times Up!  Correct Answer: " + correctAnswer);
+    $(".answer").text("Time out!  Correct Answer: " + correctAnswer);
     $(".incorrectAnswerDisplay").text(
       "Incorrect Answers: " + answeredIncorrectly
     );
     myVar = setTimeout(setQuestion, 3000);
   }
 
+  // this is the last function that runs that tells the game to stop looping through questions
   function endScreen() {
-    console.log("working! eS");
+    // console.log("it works!");
     stop();
 
+    // it empties out all the divs then displays the user's final score.
     // $('#show-number').css({ 'display': 'none' })
     $(".answer").empty();
     $(".correctAnswerDisplay").empty();
@@ -195,7 +221,7 @@ $(document).ready(function() {
         answeredIncorrectly +
         " INCORRECT"
     );
-
+    // then we give the user the option to start a new game and if they choose to they can click "new game" which then reloads the page
     var newGame = $("<button>").text("New Game?");
     $(".newGame").append(newGame);
   }
@@ -204,6 +230,7 @@ $(document).ready(function() {
   });
   var intervalId;
 
+  // this is our timer functions. this one tells the clock to count down and displays it on the screen. it also will trigger the timeLoss function if the clock goes down to 0
   function decrement() {
     if (time == 0) {
       clearInterval(intervalId);
@@ -213,16 +240,17 @@ $(document).ready(function() {
       $("#show-number").html("<h2>" + time + "</h2>");
     }
   }
+  // this is the funciton that runs between questions so the user has time to read the right answer
   function stop() {
-    // console.log('stop working!')
+    // console.log('stop is working')
     clearInterval(intervalId);
     $("#show-number").css({ display: "none" });
-    time = 3;
+    time = 5;
   }
-
+  //this is the function that starts the timer and set the clock to 15 seconds for each question
   function run() {
     clearInterval(intervalId);
-    time = 5;
+    time = 15;
     $("#show-number").css({ display: "initial" });
     intervalId = setInterval(decrement, 1000);
   }

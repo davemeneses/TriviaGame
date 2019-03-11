@@ -1,44 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets\javascript/app.js"></script>
 
     <title>Trivia</title>
-  </head>
+</head>
 
-  <body>
+<body>
+
     <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h2 class="display-4">TRIVIA GAME</h2>
 
-        <p class="lead ques"></p>
-        <div class="questionContainer">
-          <div class="quest q0"></div>
-          <div class="quest q1"></div>
-          <div class="quest q2"></div>
-          <div class="quest q3"></div>
+        <div class="container">
+            <h2 class="display-4">TRIVIA GAME</h2>
+            <div class='askForm'>
+                <div>
+                    Number Of Questions
+                    <select class="form-control numberSelect">
+
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                    </select>
+                </div>
+                <div>
+                    Difficulty
+                    <select class="form-control difficulty">
+
+                        <option>hard</option>\
+                        <option>medium</option>
+                        <option>easy</option>
+                    </select>
+                </div>
+
+                <div>
+                    Genre
+                    <select class="form-control genre">
+                        <option>General Knowledge</option>
+                        <option>Art</option>
+                        <option>Comics</option>
+                        <option>History</option>
+                        <option>Film</option>
+                        <option>Literature</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class='gameStart'>Start</button>
+
+            <p class="lead ques">
+                <p class="gameOver"></p>
+                <div class="newGame"></div>
+            </p>
+            <div class="questionContainer">
+                <div class='quest q0'> </div>
+                <div class='quest q1'> </div>
+                <div class='quest q2'> </div>
+                <div class='quest q3'> </div>
+            </div>
+
+
+            <div id="show-number"></div>
+            <br>
+            <div class='answer'></div>
+
+            <div class="correctAnswerDisplay"></div>
+            <div class="incorrectAnswerDisplay"></div>
+
         </div>
-
-        <div id="show-number"></div>
-        <br />
-        <div class="answer"></div>
-
-        <span class="winLog"></span>
-        <span class="lossLog"></span>
-      </div>
     </div>
-  </body>
+
+
+</body>
+
+
 </html>

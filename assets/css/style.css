@@ -31,24 +31,55 @@
   width: 100%;
   height: 100%;
   margin-bottom: 10px;
-  /* border-radius: 25px; */
 }
 .container {
-  border-radius: 25px;
+  border-radius: 0px 75px 0px 75px;
+  -moz-border-radius: 0px 75px 0px 75px;
+  -webkit-border-radius: 0px 75px 0px 75px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border: 19px double #000000;
+
   background-image: url("../images/trianglify.png");
-  background-blend-mode: lighten;
+  /* background-blend-mode: lighten; */
 }
 .questionContainer {
   width: 600px;
   margin: auto;
 }
+
+.correctAnswerDisplay .incorrectAnswerDisplay .answer {
+  font-size: 30px;
+}
 .quest {
-  padding-left: 90px;
+  width: 500px;
   font-size: 24px;
+  text-align: center;
 }
 .ques {
   font-size: 26px;
 }
-span {
-  font-size: 16px;
+.gameOver {
+  width: 400px;
+  margin: auto;
+  font-size: 32px;
+  color: pink;
+}
+.form-control {
+  color: blue;
+}
+.highlight {
+  /* background-color: plum; */
+  border-width: 2px;
+  border-style: solid;
+  border-color: forestgreen;
+}
+.wrongHL {
+  background-color: red;
+}
+.gameStart {
+  margin-top: 10px;
+}
+.newGame {
+  margin-top: 10px;
 }
